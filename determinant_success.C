@@ -13,6 +13,7 @@ int main() {
         scanf("%d", &c);
         if(c==-214678) exit(0);
         double **JZ = malloc(c * sizeof(double *));
+        if(JZ == NULL) exit(0);
         for (int i = 0; i < c; i++) {
             JZ[i] = (double *)malloc(c * sizeof(double));
         }
@@ -47,6 +48,7 @@ int input(double **H, int c) {
         }
         if(l_q_W == c) return 0;
     }
+    printf("您输入的方阵为\n");
     for (int i = 0; i < c; i++) {
         for (int j = 0; j < c; j++) {
             printf("%lf ", H[i][j]);
@@ -59,7 +61,7 @@ int input(double **H, int c) {
 //矩阵的行变换
 void BH(double **H, int a, int b, double JZ, int c) {
     if (JZ == 0.0) {//行交换
-        double tempRow[c];
+        double* tempRow=(double *)malloc(c * sizeof(double));
         for (int j = 0; j < c; j++) {
             tempRow[j] = H[a][j];
         }
@@ -69,13 +71,14 @@ void BH(double **H, int a, int b, double JZ, int c) {
         for (int j = 0; j < c; j++) {
             H[b][j] = tempRow[j];
         }
+        free(tempRow);
     } else {//将一行的倍数加到另一行
         for (int j = 0; j < c; j++) {
             H[a][j] +=  H[b][j] * JZ ;
         }
     }
 }
-
+//将矩阵化为上三角矩阵
 double HLS0( double **HLS, int n) {
     double result = 1.0;
     int l_q_W = 0;
@@ -83,17 +86,17 @@ double HLS0( double **HLS, int n) {
     for (int j = 0; j < n; j++) {
       o_=HLS1( HLS, n - j,j);
         if (o_ == -1) {
-            printf("结果为0");
+            printf("结果为0\n");
             return 0;
         }
             l_q_W+=o_;
     }
-    for (int i = 0; i < n; i++) {
+    /*for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             printf("%lf ", HLS[i][j]);
         }
         putchar('\n');
-    }
+    }*/
     for (int j = 0; j < n; j++) {
         result *= HLS[j][j];
     }
@@ -102,7 +105,6 @@ double HLS0( double **HLS, int n) {
     printf("%lf\n", result);
     return result;
 }
-
 int HLS1( double **HLS_M, int v,int p) {
     int j = 0;
     for (j = 0; j < v; j++) {
@@ -121,3 +123,4 @@ int HLS1( double **HLS_M, int v,int p) {
     }
     return d;
 
+}
