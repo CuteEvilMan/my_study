@@ -1,3 +1,0 @@
-D:/math_code/cmake-build-debug/CMakeFiles/math_code.dir
-D:/math_code/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/math_code/cmake-build-debug/CMakeFiles/rebuild_cache.dir

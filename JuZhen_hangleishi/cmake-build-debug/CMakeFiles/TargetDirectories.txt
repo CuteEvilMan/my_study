@@ -1,3 +1,0 @@
-D:/c00de/JuZhen_hangleishi/cmake-build-debug/CMakeFiles/JuZhen_hangleishi.dir
-D:/c00de/JuZhen_hangleishi/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/c00de/JuZhen_hangleishi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
